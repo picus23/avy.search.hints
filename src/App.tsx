@@ -1,5 +1,4 @@
 import { FC, FormEvent, FormEventHandler, useState } from 'react'
-import 'search-components/styles/style.css'
 import SearchInput from 'search-components/components/searchElement/SearchInput'
 import SearchBarEncoding from 'search-components/components/searchElement/SearchBarEncodings'
 import FilterSuggests from './components/FilterSuggests'
@@ -21,7 +20,7 @@ const App: FC<AppProps> = ({getGlobalSearchHints, handleSearch}) => {
   const [isFocused, setFocused] = useState<boolean>()
 
   const handleUserType = (phrase: string) => {
-
+    console.log('type')
     getGlobalSearchHints(phrase)
       .then((hints: GlobalSearchHintsResponse) => {
         setSearchHints(hints)
@@ -38,7 +37,7 @@ const App: FC<AppProps> = ({getGlobalSearchHints, handleSearch}) => {
   }
 
   return (
-    <div className="App">
+    <div className="App search-hint-wrap flex-grow-1">
       <SearchInput 
         handleUserTyping={handleUserType} 
         handleSearch={handleSearchWrapper}
