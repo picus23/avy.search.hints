@@ -4,13 +4,14 @@ import FieldSeries from "search-components/components/searchElement/fields/Field
 import ButtonShow from "search-components/components/buttons/ButtonShow";
 import FieldText from "search-components/components/searchElement/fields/FieldText";
 import { MdPictureAsPdf } from "react-icons/md";
-import { FileSearchHintResponse } from "../type";
+import { FileSearchHintResponse, SearchHandler } from "../type";
 
 interface FileSuggestsProps {
-    hints: Array<FileSearchHintResponse>
+    hints: Array<FileSearchHintResponse>,
+    onSuggestClick: SearchHandler,
 }
 
-const FileSuggests: FC<FileSuggestsProps> = ({hints}) => {
+const FileSuggests: FC<FileSuggestsProps> = ({hints, onSuggestClick}) => {
     return <>
         <SearchTitle>PDF документы</SearchTitle>
         
@@ -23,6 +24,7 @@ const FileSuggests: FC<FileSuggestsProps> = ({hints}) => {
                             title={item.originName} 
                             subtitle={item.subtitle} 
                             icon={<MdPictureAsPdf size={24} fill={'gray'} />}
+                            handleArrowClick={() => onSuggestClick(item.originName, 'file')}
                         ></FieldSeries>
                         <FieldText>{item.suggestText}</FieldText>
                     </div>

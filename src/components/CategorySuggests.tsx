@@ -1,13 +1,14 @@
 import { FC } from "react";
 import SearchTitle from "search-components/components/searchElement/SearchBar/SearchTitle";
 import FieldSeries from "search-components/components/searchElement/fields/FieldSeries";
-import { CategorySearchHintResponse } from "../type";
+import { CategorySearchHintResponse, SearchHandler } from "../type";
 
 interface CategorySuggestsProps {
-    hints: Array<CategorySearchHintResponse>
+    hints: Array<CategorySearchHintResponse>,
+    onSuggestClick: SearchHandler,
 }
 
-const CategorySuggests: FC<CategorySuggestsProps> = ({hints}) => {
+const CategorySuggests: FC<CategorySuggestsProps> = ({hints, onSuggestClick}) => {
     return <>
         <SearchTitle>Категории</SearchTitle>
         
@@ -19,6 +20,7 @@ const CategorySuggests: FC<CategorySuggestsProps> = ({hints}) => {
                     title={item.title} 
                     subtitle={item.subtitle} 
                     icon={<img src={item.iconSrc} alt="" />}
+                    handleArrowClick={() => { onSuggestClick(item.title, 'category') }}
                 ></FieldSeries>
             ))
         }

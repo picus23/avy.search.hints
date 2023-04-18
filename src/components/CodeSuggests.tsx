@@ -5,13 +5,14 @@ import ButtonCounter from "search-components/components/buttons/ButtonCounter";
 import Button from "search-components/components/buttons/Button";
 import {MdShoppingCart} from "react-icons/md"
 import ButtonShow from "search-components/components/buttons/ButtonShow";
-import { CodeSearchHintResponse } from "../type";
+import { CodeSearchHintResponse, SearchHandler } from "../type";
 
 interface CodeSuggestsProps {
-    hints: Array<CodeSearchHintResponse>
+    hints: Array<CodeSearchHintResponse>,
+    onSuggestClick: SearchHandler,
 }
 
-const CodeSuggests: FC<CodeSuggestsProps> = ({hints}) => {
+const CodeSuggests: FC<CodeSuggestsProps> = ({hints, onSuggestClick}) => {
     return <>
         <SearchTitle>Кодировки</SearchTitle>
         
@@ -26,7 +27,8 @@ const CodeSuggests: FC<CodeSuggestsProps> = ({hints}) => {
                             amount={item.amount}
                             button={<ButtonCounter text_style={'font-size-16-gray'} counter={1} btn_style="counter-h40"></ButtonCounter>}
                             button2={<Button icon={<MdShoppingCart size={24} fill={'white'} />} btn_style={"blue"}><span className="fw-500">Купить</span></Button>}
-                            btnGrayArrow={false}
+                            btnGrayArrow={true}
+                            handleArrowClick={() => onSuggestClick(item.title, 'code')}
                         ></FieldEncoding>
                     )
                 })

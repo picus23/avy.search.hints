@@ -2,15 +2,16 @@ import { FC } from "react";
 import SearchTitle from "search-components/components/searchElement/SearchBar/SearchTitle";
 import FieldSeries from "search-components/components/searchElement/fields/FieldSeries";
 import FieldCharacteristic from 'search-components/components/searchElement/fields/FieldCharacteristic'
-import { SeriesSearchHintResponse } from "../type";
+import { SearchHandler, SeriesSearchHintResponse } from "../type";
 
 interface SeriesSuggestsProps {
-    hints: Array<SeriesSearchHintResponse>
+    hints: Array<SeriesSearchHintResponse>,
+    onSuggestClick: SearchHandler,
 }
 
-const SeriesSuggests: FC<SeriesSuggestsProps> = ({hints}) => {
+const SeriesSuggests: FC<SeriesSuggestsProps> = ({hints, onSuggestClick}) => {
     return <>
-        <SearchTitle>Фильтры</SearchTitle>
+        <SearchTitle>Серии</SearchTitle>
 
         <div className="row w-100 gap-2">
             {
@@ -21,6 +22,7 @@ const SeriesSuggests: FC<SeriesSuggestsProps> = ({hints}) => {
                             title={hint.title} 
                             subtitle={hint.subtitle} 
                             icon={<img src="/kit/empty_square.png" alt="" />}
+                            handleArrowClick={() => {onSuggestClick(hint.title, 'series')}}
                         ></FieldSeries>
 
                         { hint?.characteristics !== undefined &&

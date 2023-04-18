@@ -19,8 +19,12 @@ const App: FC<AppProps> = ({getGlobalSearchHints, handleSearch}) => {
   const [searchHints, setSearchHints] = useState<GlobalSearchHintsResponse>()
   const [isFocused, setFocused] = useState<boolean>()
 
+  let searchPhrase: string;
+
   const handleUserType = (phrase: string) => {
-    console.log('type')
+
+    searchPhrase = phrase
+    
     getGlobalSearchHints(phrase)
       .then((hints: GlobalSearchHintsResponse) => {
         setSearchHints(hints)
@@ -56,34 +60,49 @@ const App: FC<AppProps> = ({getGlobalSearchHints, handleSearch}) => {
 
             {searchHints?.filter !== undefined &&
               <>
-                <FilterSuggests hints={searchHints.filter}></FilterSuggests>
+                <FilterSuggests 
+                  hints={searchHints.filter}
+                  onSuggestClick={handleSearchWrapper}
+                ></FilterSuggests>
                 <hr className="w-100" />
               </>
             }
 
             {searchHints?.code !== undefined &&
               <>
-                <CodeSuggests hints={searchHints.code}></CodeSuggests>
+                <CodeSuggests 
+                  hints={searchHints.code}
+                  onSuggestClick={handleSearchWrapper}
+                ></CodeSuggests>
                 <hr className="w-100" />
               </>
             }
 
             {searchHints?.series !== undefined &&
               <>
-                <SeriesSuggests hints={searchHints.series}></SeriesSuggests>
+                <SeriesSuggests 
+                  hints={searchHints.series}
+                  onSuggestClick={handleSearchWrapper}
+                ></SeriesSuggests>
                 <hr className="w-100" />
               </>
             }
 
             {searchHints?.category !== undefined &&
               <>
-                <CategorySuggests hints={searchHints.category}></CategorySuggests>
+                <CategorySuggests 
+                  hints={searchHints.category} 
+                  onSuggestClick={handleSearchWrapper}
+                ></CategorySuggests>
                 <hr className="w-100" />
               </>
             }
 
             {searchHints?.file !== undefined &&
-                <FileSuggests hints={searchHints.file}></FileSuggests>
+                <FileSuggests 
+                  hints={searchHints.file}
+                  onSuggestClick={handleSearchWrapper}
+                ></FileSuggests>
             }
 
           </div>
