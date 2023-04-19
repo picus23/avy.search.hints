@@ -24,6 +24,6 @@ const handleSearch: SearchHandler = (phrase: string, context: string|null): void
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App getGlobalSearchHints={fetchSearchHints} handleSearch={handleSearch}/>
+    <App initSearchPhrase='npt' getGlobalSearchHints={fetchSearchHints} handleSearch={handleSearch}/>
   </React.StrictMode>,
 )
