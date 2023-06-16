@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import { GlobalSearchHintsResponse, SearchHandler } from './type'
-import 'search-components/styles/style.css'
+import 'kit/styles/style.css'
 
 const fetchSearchHints = (phrase: string) : Promise<GlobalSearchHintsResponse> => {
 

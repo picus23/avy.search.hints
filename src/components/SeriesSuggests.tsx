@@ -1,7 +1,7 @@
 import { FC } from "react";
-import SearchTitle from "search-components/components/searchElement/SearchBar/SearchTitle";
-import FieldSeries from "search-components/components/searchElement/fields/FieldSeries";
-import FieldCharacteristic from 'search-components/components/searchElement/fields/FieldCharacteristic'
+import SearchTitle from "kit/components/searchElement/SearchBar/SearchTitle";
+import FieldSeries from "kit/components/searchElement/fields/FieldSeries";
+import FieldCharacteristic from 'kit/components/searchElement/fields/FieldCharacteristic'
 import { SearchHandler, SeriesSearchHintResponse } from "../type";
 
 interface SeriesSuggestsProps {

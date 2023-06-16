@@ -1,7 +1,7 @@
 import { FC } from "react";
-import SearchTitle from "search-components/components/searchElement/SearchBar/SearchTitle";
-import FieldSeries from "search-components/components/searchElement/fields/FieldSeries";
-import { MdFilterAlt } from "react-icons/md";
+import SearchTitle from "kit/components/searchElement/SearchBar/SearchTitle";
+import FieldSeries from "kit/components/searchElement/fields/FieldSeries";
+// import { MdFilterAlt } from "react-icons/md";
 import { FilterSearchHintResponse, SearchHandler } from "../type";
 
 interface FilterSuggestsProps {
@@ -25,7 +25,7 @@ const FilterSuggests: FC<FilterSuggestsProps> = ({hints, onSuggestClick}) => {
                     return (
                         <FieldSeries
                             key={idx}
-                            icon={<MdFilterAlt size={24} fill={'gray'} />} 
+                            // icon={<MdFilterAlt size={24} fill={'gray'} />} 
                             title={hint.title} 
                             subtitle={hint.subtitle}
                             handleArrowClick={() => { onSuggestClick(hint.title, 'filter') }}

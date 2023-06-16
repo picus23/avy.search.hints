@@ -1,6 +1,6 @@
 import { FC } from "react";
-import SearchTitle from "search-components/components/searchElement/SearchBar/SearchTitle";
-import FieldSeries from "search-components/components/searchElement/fields/FieldSeries";
+import SearchTitle from "kit/components/searchElement/SearchBar/SearchTitle";
+import FieldSeries from "kit/components/searchElement/fields/FieldSeries";
 import { CategorySearchHintResponse, SearchHandler } from "../type";
 
 interface CategorySuggestsProps {

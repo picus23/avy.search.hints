@@ -2,7 +2,6 @@
   "name": "searchhints",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "types": "./src/type.d.ts",
   "scripts": {
     "dev": "vite",
@@ -10,9 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "kit": "git://github.com:picus23/any-web-components.git",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "search-components": "git://github.com:picus23/any-web-components.git"
+    "react-icons": "^4.9.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

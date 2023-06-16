@@ -1,6 +1,6 @@
-import { FC, createRef, Component, RefObject } from 'react'
-import SearchInput from 'search-components/components/searchElement/SearchInput'
-import SearchBarEncoding from 'search-components/components/searchElement/SearchBarEncodings'
+import { createRef, Component, RefObject } from 'react'
+import SearchInput from 'kit/components/searchElement/SearchInput'
+import SearchBarEncoding from 'kit/components/searchElement/SearchBarEncodings'
 import FilterSuggests from './components/FilterSuggests'
 import SeriesSuggests from './components/SeriesSuggests'
 import CodeSuggests from './components/CodeSuggests'
@@ -98,7 +98,7 @@ class App extends Component<AppProps> {
           searchPhrase={this.state.inputPhrase}
           handleUserTyping={this.handleUserType} 
           handleSearch={this.handleSearchWrapper}
-        ></SearchInput>
+        />
   
         {this.state.isHintsDisplayed && Object.keys(this.state.searchHints).length === 0 &&
           <SearchBarEncoding>

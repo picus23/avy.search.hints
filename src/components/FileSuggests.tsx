@@ -1,8 +1,8 @@
 import { FC } from "react";
-import SearchTitle from "search-components/components/searchElement/SearchBar/SearchTitle";
-import FieldSeries from "search-components/components/searchElement/fields/FieldSeries";
-import ButtonShow from "search-components/components/buttons/ButtonShow";
-import FieldText from "search-components/components/searchElement/fields/FieldText";
+import SearchTitle from "kit/components/searchElement/SearchBar/SearchTitle";
+import FieldSeries from "kit/components/searchElement/fields/FieldSeries";
+import ButtonShow from "kit/components/buttons/ButtonShow";
+import FieldText from "kit/components/searchElement/fields/FieldText";
 import { MdPictureAsPdf } from "react-icons/md";
 import { FileSearchHintResponse, SearchHandler } from "../type";
 

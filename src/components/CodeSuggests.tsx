@@ -1,11 +1,11 @@
 import { FC } from "react";
-import SearchTitle from "search-components/components/searchElement/SearchBar/SearchTitle";
-import FieldEncoding from "search-components/components/searchElement/fields/FieldEncoding";
-import ButtonCounter from "search-components/components/buttons/ButtonCounter";
-import Button from "search-components/components/buttons/Button";
-import {MdShoppingCart} from "react-icons/md"
-import ButtonShow from "search-components/components/buttons/ButtonShow";
+import SearchTitle from "kit/components/searchElement/SearchBar/SearchTitle";
+import FieldEncoding from "kit/components/searchElement/fields/FieldEncoding";
+import ButtonCounter from "kit/components/buttons/ButtonCounter";
+import Button from "kit/components/buttons/Button";
+import ButtonShow from "kit/components/buttons/ButtonShow";
 import { CodeSearchHintResponse, SearchHandler } from "../type";
+import { MdShoppingCart } from "react-icons/md";
 
 interface CodeSuggestsProps {
     hints: Array<CodeSearchHintResponse>,
@@ -20,7 +20,7 @@ const CodeSuggests: FC<CodeSuggestsProps> = ({hints, onSuggestClick}) => {
             {
                 hints.map((item, idx) => {
                     return (
-                        <FieldEncoding icon={<img src={'/kit/empty_square.png'} alt='' />}
+                        <FieldEncoding imgUrl={<img src={'/kit/empty_square.png'} alt='' />}
                             key={idx}
                             title={item.title}
                             price={item.price}

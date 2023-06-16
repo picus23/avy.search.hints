@@ -1,7 +1,7 @@
 import { FC } from "react";
-import SearchTitle from "search-components/components/searchElement/SearchBar/SearchTitle";
-import FieldCategory from "search-components/components/searchElement/fields/FieldCategory";
-import FieldSeries from "search-components/components/searchElement/fields/FieldSeries";
+import SearchTitle from "kit/components/searchElement/SearchBar/SearchTitle";
+import FieldCategory from "kit/components/searchElement/fields/FieldCategory";
+import FieldSeries from "kit/components/searchElement/fields/FieldSeries";
 import { MdSearch } from 'react-icons/md'
 import { getStorage } from "../searchHistory";
 import { SearchHandler } from "../type";
