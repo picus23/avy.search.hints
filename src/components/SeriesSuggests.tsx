@@ -28,13 +28,13 @@ const SeriesSuggests: FC<SeriesSuggestsProps> = ({hints, onSuggestClick}) => {
                         { hint?.characteristics !== undefined &&
                             <div className="d-flex justify-content-between me-4">
                                 {
-                                    hint.characteristics.map((characteristic, charIdx) => (
-                                        <FieldCharacteristic 
-                                            key={charIdx}
-                                            title={characteristic.title} 
-                                            subtitle={characteristic.subtitle}
-                                        ></FieldCharacteristic>
-                                    ))
+                                    // hint.characteristics.map((characteristic, charIdx) => (
+                                    //     <FieldCharacteristic 
+                                    //         key={charIdx}
+                                    //         title={characteristic.title} 
+                                    //         subtitle={characteristic.subtitle}
+                                    //     ></FieldCharacteristic>
+                                    // ))
                                 }
                             </div>
                         }

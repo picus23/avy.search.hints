@@ -16,7 +16,7 @@ const CodeSuggests: FC<CodeSuggestsProps> = ({hints, onSuggestClick}) => {
     return <>
         <SearchTitle>Кодировки</SearchTitle>
         
-        <div className="row w-100">
+        {/* <div className="row w-100">
             {
                 hints.map((item, idx) => {
                     return (
@@ -34,7 +34,7 @@ const CodeSuggests: FC<CodeSuggestsProps> = ({hints, onSuggestClick}) => {
                 })
             }
             <ButtonShow btn_style='show' text={'Показать все кодировки'} text_style={'font-size-16-black fw-500'} counter={12}></ButtonShow>
-        </div>
+        </div> */}
     </>
 }
 
