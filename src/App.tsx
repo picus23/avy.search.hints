@@ -6,7 +6,7 @@ import SeriesSuggests from './components/SeriesSuggests'
 import CodeSuggests from './components/CodeSuggests'
 import CategorySuggests from './components/CategorySuggests'
 import FileSuggests from './components/FileSuggests'
-import {GlobalSearchHintsResponse, SearchHandler} from './type'
+import { GlobalSearchHintsResponse, SearchHandler } from './type'
 import { pushPhrase } from './searchHistory'
 import EmptyHints from './components/EmptyHints'
 
@@ -26,7 +26,7 @@ class App extends Component<AppProps> {
     inputPhrase: string
   }
 
-  constructor(props: AppProps){
+  constructor(props: AppProps) {
     super(props)
 
     this.state = {
@@ -51,11 +51,11 @@ class App extends Component<AppProps> {
   }
 
   globalClickHandler = (e: MouseEvent): void => {
-    if(this.wrapContainer.current === null) {
+    if (this.wrapContainer.current === null) {
       return;
     }
 
-    if(this.wrapContainer.current.contains(e.target as Node)) {
+    if (this.wrapContainer.current.contains(e.target as Node)) {
       return this.setHintsDisplayed(true)
     }
 
@@ -63,20 +63,21 @@ class App extends Component<AppProps> {
   }
 
   setHintsDisplayed = (status: boolean) => {
-    this.setState({...this.state, isHintsDisplayed: status})
+    this.setState({ ...this.state, isHintsDisplayed: status })
   }
 
   setSearchHints = (hints: GlobalSearchHintsResponse) => {
-    this.setState({...this.state, searchHints: hints})
+    this.setState({ ...this.state, searchHints: hints })
   }
 
   setInputPhrase = (phrase: string) => {
-    this.setState({...this.state, inputPhrase: phrase})
+    this.setState({ ...this.state, inputPhrase: phrase })
   }
 
-  handleSearchWrapper: SearchHandler = (phrase: string, context: string|null) => {
+  handleSearchWrapper: SearchHandler = (phrase: string, context: string | null) => {
     this.setHintsDisplayed(false)
-    pushPhrase(phrase)
+    if (context == 'search')
+      pushPhrase(phrase)
 
     this.props.handleSearch(phrase, context)
   }
@@ -94,69 +95,69 @@ class App extends Component<AppProps> {
   render() {
     return (
       <div className="App search-hint-wrap flex-grow-1" ref={this.wrapContainer}>
-        <SearchInput 
+        <SearchInput
           searchPhrase={this.state.inputPhrase}
-          handleUserTyping={this.handleUserType} 
+          handleUserTyping={this.handleUserType}
           handleSearch={this.handleSearchWrapper}
         />
-  
+
         {this.state.isHintsDisplayed && Object.keys(this.state.searchHints).length === 0 &&
           <SearchBarEncoding>
             <EmptyHints onSuggestClick={this.handleSearchWrapper}></EmptyHints>
           </SearchBarEncoding>
         }
-  
+
         {this.state.isHintsDisplayed && Object.keys(this.state.searchHints).length !== 0 &&
           <SearchBarEncoding>
             <div className="search-hint-history">
-  
+
               {this.state.searchHints?.filter !== undefined &&
                 <>
-                  <FilterSuggests 
+                  <FilterSuggests
                     hints={this.state.searchHints.filter}
                     onSuggestClick={this.handleSearchWrapper}
                   ></FilterSuggests>
                   <hr className="w-100" />
                 </>
               }
-  
+
               {this.state.searchHints?.code !== undefined &&
                 <>
-                  <CodeSuggests 
+                  <CodeSuggests
                     hints={this.state.searchHints.code}
                     onSuggestClick={this.handleSearchWrapper}
                   ></CodeSuggests>
                   <hr className="w-100" />
                 </>
               }
-  
+
               {this.state.searchHints?.series !== undefined &&
                 <>
-                  <SeriesSuggests 
+                  <SeriesSuggests
                     hints={this.state.searchHints.series}
                     onSuggestClick={this.handleSearchWrapper}
                   ></SeriesSuggests>
                   <hr className="w-100" />
                 </>
               }
-  
+
               {this.state.searchHints?.category !== undefined &&
                 <>
-                  <CategorySuggests 
-                    hints={this.state.searchHints.category} 
+                  <CategorySuggests
+                    hints={this.state.searchHints.category}
                     onSuggestClick={this.handleSearchWrapper}
                   ></CategorySuggests>
                   <hr className="w-100" />
                 </>
               }
-  
+
               {this.state.searchHints?.file !== undefined &&
-                  <FileSuggests 
-                    hints={this.state.searchHints.file}
-                    onSuggestClick={this.handleSearchWrapper}
-                  ></FileSuggests>
+                <FileSuggests
+                  hints={this.state.searchHints.file}
+                  onSuggestClick={this.handleSearchWrapper}
+                ></FileSuggests>
               }
-  
+
             </div>
           </SearchBarEncoding>
         }

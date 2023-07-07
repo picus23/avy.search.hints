@@ -10,24 +10,32 @@ interface EmptyHintsProps {
     onSuggestClick: SearchHandler,
 }
 
-const EmptyHints: FC<EmptyHintsProps> = ({onSuggestClick}) => {
+const EmptyHints: FC<EmptyHintsProps> = ({ onSuggestClick }) => {
     return <>
+        <SearchTitle>Вы искали</SearchTitle>
+        <div className="d-flex align-items-center">
 
-        {
-            getStorage().length !== 0 && getStorage().map((hint, idx) => {
-                return <div className="me-2" key={idx} onClick={() => { onSuggestClick(hint, null) }}>
-                    <MdSearch size={24} fill={'gray'} />
-                    <span className="font-size-20 ms-3 fw-500">{hint}</span>
-                </div>
-            })
-        }
+            {
+                getStorage().length !== 0 && getStorage().map((hint, idx) => {
+                    return <div role="button" className="p-1 me-2" key={idx} onClick={() => { onSuggestClick(hint, 'search') }}>
+                        <MdSearch size={24} fill={'gray'} />
+                        <span className="font-size-20 p-1 fw-500">{hint}</span>
+                    </div>
+                })
+            }
 
+        </div>
         <hr />
 
         <SearchTitle>Часто ищут</SearchTitle>
         {
-            ['Hy-Lok 3мм', 'Шаровые краны', 'Микронные фильтры'].map((title, idx) => (
-                <FieldCategory key={idx} title={title} handleArrowClick={() => {onSuggestClick(title, null)}}/>
+            [
+                '105',
+                'Hy-Lok 3мм',
+                'Шаровые краны инструментальные',
+                'Микронные фильтры',
+            ].map((title, idx) => (
+                <FieldCategory key={idx} title={title} handleArrowClick={() => { onSuggestClick(title, 'search') }} />
             ))
         }
 
@@ -36,16 +44,27 @@ const EmptyHints: FC<EmptyHintsProps> = ({onSuggestClick}) => {
         <SearchTitle>Популярные категории</SearchTitle>
         {
             [
-                ['Фитинги для труб', '45 серия', '/kit/empty_square.png'],
-                ['Шаровые краны', '45 серия', '/kit/empty_square.png'],
-                ['Микронные фильтры', '45 серия', '/kit/empty_square.png'],
-            ].map((item, idx) => (
+                {
+                    title: 'Трубные фитинги',
+                    image: '/assets/v/images/2__preview.jpg',
+                    url: '/products/trubnye_fitingi',
+                },
+                {
+                    title: 'Шаровые краны инструментальные',
+                    image: '/assets/v/images/14__preview.jpg',
+                    url: '/products/sharovye_krany_instrumentalnye',
+                }, {
+                    title: 'Игольчатые вентили инструментальные',
+                    image: '/assets/v/images/41__preview.jpg',
+                    url: '/products/igolchatye_ventili_instrumentalnye',
+                },
+            ].map(({ title, image, url }, idx) => (
                 <FieldSeries
-                    key={idx} 
-                    title={item[0]} 
-                    subtitle={item[1]} 
-                    icon={<img src={item[2]} alt="" />}
-                    handleArrowClick={() => { onSuggestClick(item[0], 'category') }}
+                    key={idx}
+                    title={title}
+                    subtitle={''}
+                    icon={<img height={64} width={64} src={image} alt="" />}
+                    handleArrowClick={() => { onSuggestClick(url, 'url') }}
                 ></FieldSeries>
             ))
         }
