@@ -111,7 +111,7 @@ class App extends Component<AppProps> {
           <SearchBarEncoding>
             <div className="search-hint-history">
 
-              {this.state.searchHints?.filter !== undefined &&
+              {/* {this.state.searchHints?.filter !== undefined &&
                 <>
                   <FilterSuggests
                     hints={this.state.searchHints.filter}
@@ -119,9 +119,9 @@ class App extends Component<AppProps> {
                   ></FilterSuggests>
                   <hr className="w-100" />
                 </>
-              }
+              } */}
 
-              {this.state.searchHints?.code !== undefined &&
+              {/* {this.state.searchHints?.code !== undefined &&
                 <>
                   <CodeSuggests
                     hints={this.state.searchHints.code}
@@ -129,7 +129,7 @@ class App extends Component<AppProps> {
                   ></CodeSuggests>
                   <hr className="w-100" />
                 </>
-              }
+              } */}
 
               {this.state.searchHints?.series !== undefined &&
                 <>
@@ -141,7 +141,7 @@ class App extends Component<AppProps> {
                 </>
               }
 
-              {this.state.searchHints?.category !== undefined &&
+              {/* {this.state.searchHints?.category !== undefined &&
                 <>
                   <CategorySuggests
                     hints={this.state.searchHints.category}
@@ -149,7 +149,7 @@ class App extends Component<AppProps> {
                   ></CategorySuggests>
                   <hr className="w-100" />
                 </>
-              }
+              } */}
 
               {this.state.searchHints?.file !== undefined &&
                 <FileSuggests

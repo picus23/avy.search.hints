@@ -30,12 +30,12 @@ const FileSuggests: FC<FileSuggestsProps> = ({hints, onSuggestClick}) => {
                     </div>
                 ))
             }
-            <ButtonShow 
+            {/* <ButtonShow 
                 btn_style='show my-2' 
                 text={'Показать все документы'} 
                 text_style={'font-size-16-black fw-500'} 
                 counter={12}
-            ></ButtonShow>
+            ></ButtonShow> */}
         </div>
     </>
 }
