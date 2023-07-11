@@ -21,7 +21,7 @@ const SeriesSuggests: FC<SeriesSuggestsProps> = ({hints, onSuggestClick}) => {
                             key={idx} 
                             title={hint.title} 
                             subtitle={hint.subtitle} 
-                            icon={<img src="/kit/empty_square.png" alt="" />}
+                            icon={'/kit/empty_square.png'}
                             handleArrowClick={() => {onSuggestClick(hint.title, 'series')}}
                         ></FieldSeries>
 
