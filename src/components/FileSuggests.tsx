@@ -5,6 +5,7 @@ import ButtonShow from "kit/components/buttons/ButtonShow";
 import FieldText from "kit/components/searchElement/fields/FieldText";
 import { MdPictureAsPdf } from "react-icons/md";
 import { FileSearchHintResponse, SearchHandler } from "../type";
+import Highlighter from "./Highlighter";
 
 interface FileSuggestsProps {
     hints: Array<FileSearchHintResponse>,
@@ -23,10 +24,9 @@ const FileSuggests: FC<FileSuggestsProps> = ({hints, onSuggestClick}) => {
                             key={idx}
                             title={item.originName} 
                             subtitle={item.subtitle} 
-                            icon={<MdPictureAsPdf size={24} fill={'gray'} />}
                             handleArrowClick={() => onSuggestClick(item.originName, 'file')}
                         ></FieldSeries>
-                        <FieldText>{item.suggestText}</FieldText>
+                        <FieldText><Highlighter text={item.suggestText} /></FieldText>
                     </div>
                 ))
             }

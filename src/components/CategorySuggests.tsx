@@ -2,6 +2,7 @@ import { FC } from "react";
 import SearchTitle from "kit/components/searchElement/SearchBar/SearchTitle";
 import FieldSeries from "kit/components/searchElement/fields/FieldSeries";
 import { CategorySearchHintResponse, SearchHandler } from "../type";
+import Highlighter from "./Highlighter";
 
 interface CategorySuggestsProps {
     hints: Array<CategorySearchHintResponse>,
@@ -9,18 +10,19 @@ interface CategorySuggestsProps {
 }
 
 const CategorySuggests: FC<CategorySuggestsProps> = ({hints, onSuggestClick}) => {
+    console.log({hints})
+    
     return <>
         <SearchTitle>Категории</SearchTitle>
         
         <div className="row w-100">
         {
             hints.map((item, idx) => (
+                
                 <FieldSeries 
                     key={idx}
-                    title={item.title} 
-                    subtitle={item.subtitle} 
-                    icon={<img src={item.iconSrc} alt="" />}
-                    handleArrowClick={() => { onSuggestClick(item.title, 'category') }}
+                    title={<Highlighter text={item.value_highlighted} />} 
+                    handleArrowClick={() => { onSuggestClick(item.value, 'search') }}
                 ></FieldSeries>
             ))
         }

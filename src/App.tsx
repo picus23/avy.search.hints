@@ -141,7 +141,7 @@ class App extends Component<AppProps> {
                 </>
               }
 
-              {/* {this.state.searchHints?.category !== undefined &&
+              {this.state.searchHints?.category !== undefined &&
                 <>
                   <CategorySuggests
                     hints={this.state.searchHints.category}
@@ -149,7 +149,7 @@ class App extends Component<AppProps> {
                   ></CategorySuggests>
                   <hr className="w-100" />
                 </>
-              } */}
+              }
 
               {this.state.searchHints?.file !== undefined &&
                 <FileSuggests

@@ -63,7 +63,7 @@ const EmptyHints: FC<EmptyHintsProps> = ({ onSuggestClick }) => {
                     key={idx}
                     title={title}
                     subtitle={''}
-                    icon={<img height={64} width={64} src={image} alt="" />}
+                    icon={image}
                     handleArrowClick={() => { onSuggestClick(url, 'url') }}
                 ></FieldSeries>
             ))

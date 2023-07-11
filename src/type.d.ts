@@ -29,9 +29,9 @@ export interface SeriesCharacteristicsSearchHintResponse {
 }
 
 export interface CategorySearchHintResponse {
-  title: string,
-  subtitle: string,
-  iconSrc: string
+  seriaId: number,
+  value: string,
+  value_highlighted: string
 }
 
 export interface FileSearchHintResponse {
