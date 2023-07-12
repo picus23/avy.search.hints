@@ -10,8 +10,7 @@ interface CategorySuggestsProps {
 }
 
 const CategorySuggests: FC<CategorySuggestsProps> = ({hints, onSuggestClick}) => {
-    console.log({hints})
-    
+
     return <>
         <SearchTitle>Категории</SearchTitle>
         
@@ -22,7 +21,7 @@ const CategorySuggests: FC<CategorySuggestsProps> = ({hints, onSuggestClick}) =>
                 <FieldSeries 
                     key={idx}
                     title={<Highlighter text={item.value_highlighted} />} 
-                    handleArrowClick={() => { onSuggestClick(item.value, 'search') }}
+                    handleArrowClick={() => { onSuggestClick('/products/' + item.url, 'url') }}
                 ></FieldSeries>
             ))
         }

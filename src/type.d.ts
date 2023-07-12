@@ -12,9 +12,8 @@ export interface FilterSearchHintResponse {
 }
 
 export interface CodeSearchHintResponse {
-  title: string,
-  price: number,
-  amount: number,
+  value: string,
+  value_highlighted: string,
 }
 
 export interface SeriesSearchHintResponse {
@@ -31,13 +30,15 @@ export interface SeriesCharacteristicsSearchHintResponse {
 export interface CategorySearchHintResponse {
   seriaId: number,
   value: string,
-  value_highlighted: string
+  value_highlighted: string,
+  url: string,
 }
 
 export interface FileSearchHintResponse {
-  originName: string,
-  subtitle: string,
+  fileName: string,
   suggestText: string,
+  customId: string,
+  originName: string,
 }
 
 export type SearchHandler = (phrase: string, context: string|null) => void

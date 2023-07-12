@@ -5,7 +5,7 @@ interface HighlighterProps {
 }
  
 const Highlighter: FC<HighlighterProps> = ({text}) => {
-    return <div dangerouslySetInnerHTML={{__html: text}} />
+    return <span dangerouslySetInnerHTML={{__html: text}} />
 }
  
 export default Highlighter;

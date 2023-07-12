@@ -121,7 +121,7 @@ class App extends Component<AppProps> {
                 </>
               } */}
 
-              {/* {this.state.searchHints?.code !== undefined &&
+              {this.state.searchHints?.code !== undefined &&
                 <>
                   <CodeSuggests
                     hints={this.state.searchHints.code}
@@ -129,7 +129,7 @@ class App extends Component<AppProps> {
                   ></CodeSuggests>
                   <hr className="w-100" />
                 </>
-              } */}
+              }
 
               {this.state.searchHints?.series !== undefined &&
                 <>

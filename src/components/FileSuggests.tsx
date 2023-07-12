@@ -3,7 +3,7 @@ import SearchTitle from "kit/components/searchElement/SearchBar/SearchTitle";
 import FieldSeries from "kit/components/searchElement/fields/FieldSeries";
 import ButtonShow from "kit/components/buttons/ButtonShow";
 import FieldText from "kit/components/searchElement/fields/FieldText";
-import { MdPictureAsPdf } from "react-icons/md";
+import { MdFileDownload, MdPictureAsPdf } from "react-icons/md";
 import { FileSearchHintResponse, SearchHandler } from "../type";
 import Highlighter from "./Highlighter";
 
@@ -21,10 +21,10 @@ const FileSuggests: FC<FileSuggestsProps> = ({hints, onSuggestClick}) => {
                 hints.map((item, idx) => (
                     <div>
                         <FieldSeries 
+                            // buttonIcon={<MdFileDownload fill='gray' />}
                             key={idx}
-                            title={item.originName} 
-                            subtitle={item.subtitle} 
-                            handleArrowClick={() => onSuggestClick(item.originName, 'file')}
+                            title={item.fileName} 
+                            handleArrowClick={() => onSuggestClick(item.originName, 'url')}
                         ></FieldSeries>
                         <FieldText><Highlighter text={item.suggestText} /></FieldText>
                     </div>

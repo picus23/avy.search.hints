@@ -6,6 +6,7 @@ import Button from "kit/components/buttons/Button";
 import ButtonShow from "kit/components/buttons/ButtonShow";
 import { CodeSearchHintResponse, SearchHandler } from "../type";
 import { MdShoppingCart } from "react-icons/md";
+import Highlighter from "./Highlighter";
 
 interface CodeSuggestsProps {
     hints: Array<CodeSearchHintResponse>,
@@ -13,28 +14,28 @@ interface CodeSuggestsProps {
 }
 
 const CodeSuggests: FC<CodeSuggestsProps> = ({hints, onSuggestClick}) => {
+    console.log({hints})
     return <>
         <SearchTitle>Кодировки</SearchTitle>
         
-        {/* <div className="row w-100">
+        <div className="row w-100 overflow-auto" style={{height: 200}}>
             {
                 hints.map((item, idx) => {
                     return (
-                        <FieldEncoding imgUrl={<img src={'/kit/empty_square.png'} alt='' />}
+                        <FieldEncoding 
                             key={idx}
-                            title={item.title}
-                            price={item.price}
-                            amount={item.amount}
+                            pagetitle={<Highlighter text={item.value_highlighted} />}
+                          
                             button={<ButtonCounter text_style={'font-size-16-gray'} counter={1} btn_style="counter-h40"></ButtonCounter>}
-                            button2={<Button icon={<MdShoppingCart size={24} fill={'white'} />} btn_style={"blue"}><span className="fw-500">Купить</span></Button>}
+                            button2={<Button icon={<MdShoppingCart size={24} fill={'white'} />} btn_style={"btn-primary"}><span className="fw-500">Купить</span></Button>}
                             btnGrayArrow={true}
-                            handleArrowClick={() => onSuggestClick(item.title, 'code')}
+                            handleArrowClick={() => onSuggestClick(item.value, 'search')}
                         ></FieldEncoding>
                     )
                 })
             }
-            <ButtonShow btn_style='show' text={'Показать все кодировки'} text_style={'font-size-16-black fw-500'} counter={12}></ButtonShow>
-        </div> */}
+            {/* <ButtonShow btn_style='show' text={'Показать все кодировки'} text_style={'font-size-16-black fw-500'} counter={12}></ButtonShow> */}
+        </div>
     </>
 }
 
