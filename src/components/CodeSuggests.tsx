@@ -7,30 +7,36 @@ import ButtonShow from "kit/components/buttons/ButtonShow";
 import { CodeSearchHintResponse, SearchHandler } from "../type";
 import { MdShoppingCart } from "react-icons/md";
 import Highlighter from "./Highlighter";
+import FieldSeries from "kit/components/searchElement/fields/FieldSeries";
 
 interface CodeSuggestsProps {
     hints: Array<CodeSearchHintResponse>,
     onSuggestClick: SearchHandler,
 }
 
-const CodeSuggests: FC<CodeSuggestsProps> = ({hints, onSuggestClick}) => {
-    console.log({hints})
+const CodeSuggests: FC<CodeSuggestsProps> = ({ hints, onSuggestClick }) => {
+    console.log({ hints })
     return <>
         <SearchTitle>Кодировки</SearchTitle>
-        
-        <div className="row w-100 overflow-auto" style={{height: 200}}>
+
+        <div className="row w-100 overflow-auto" style={{ maxHeight: 200 }}>
             {
                 hints.map((item, idx) => {
                     return (
-                        <FieldEncoding 
+                        <FieldSeries
                             key={idx}
-                            pagetitle={<Highlighter text={item.value_highlighted} />}
-                          
-                            button={<ButtonCounter text_style={'font-size-16-gray'} counter={1} btn_style="counter-h40"></ButtonCounter>}
-                            button2={<Button icon={<MdShoppingCart size={24} fill={'white'} />} btn_style={"btn-primary"}><span className="fw-500">Купить</span></Button>}
-                            btnGrayArrow={true}
-                            handleArrowClick={() => onSuggestClick(item.value, 'search')}
-                        ></FieldEncoding>
+                            title={<Highlighter text={item.value_highlighted} />}
+                            handleArrowClick={() => { onSuggestClick(item.value, 'search') }}
+                        ></FieldSeries>
+                        // <FieldEncoding 
+                        //     key={idx}
+                        //     pagetitle={<Highlighter text={item.value_highlighted} />}
+
+                        //     button={<ButtonCounter text_style={'font-size-16-gray'} counter={1} btn_style="counter-h40"></ButtonCounter>}
+                        //     button2={<Button icon={<MdShoppingCart size={24} fill={'white'} />} btn_style={"btn-primary"}><span className="fw-500">Купить</span></Button>}
+                        //     btnGrayArrow={true}
+                        //     handleArrowClick={() => onSuggestClick(item.value, 'search')}
+                        // ></FieldEncoding>
                     )
                 })
             }
