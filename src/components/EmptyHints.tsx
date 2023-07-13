@@ -11,22 +11,30 @@ interface EmptyHintsProps {
 }
 
 const EmptyHints: FC<EmptyHintsProps> = ({ onSuggestClick }) => {
+
+    const storage = getStorage()
+
+
     return <>
-        <SearchTitle>Вы искали</SearchTitle>
-        <div className="d-flex align-items-center">
+        {
+            storage.length!=0 && <>
+                <SearchTitle>Вы искали</SearchTitle>
+                <div className="d-flex align-items-center">
 
-            {
-                getStorage().length !== 0 && getStorage().map((hint, idx) => {
-                    return <div role="button" className="p-1 me-2" key={idx} onClick={() => { onSuggestClick(hint, 'search') }}>
-                        <MdSearch size={24} fill={'gray'} />
-                        <span className="font-size-20 p-1 fw-500">{hint}</span>
-                    </div>
-                })
-            }
+                    {
+                        storage.map((hint, idx) => {
+                            return <div role="button" className="p-1 me-2" key={idx} onClick={() => { onSuggestClick(hint, 'search') }}>
+                                <MdSearch size={24} fill={'gray'} />
+                                <span className="font-size-20 p-1 fw-500">{hint}</span>
+                            </div>
+                        })
+                    }
 
-        </div>
-        <hr />
+                </div>
+                <hr />
+            </>
 
+        }
         <SearchTitle>Часто ищут</SearchTitle>
         {
             [
