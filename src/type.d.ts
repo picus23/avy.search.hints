@@ -14,6 +14,7 @@ export interface FilterSearchHintResponse {
 export interface CodeSearchHintResponse {
   value: string,
   value_highlighted: string,
+  image_url: string,
 }
 
 export interface SeriesSearchHintResponse {

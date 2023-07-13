@@ -1,13 +1,10 @@
 import { FC } from "react";
 import SearchTitle from "kit/components/searchElement/SearchBar/SearchTitle";
-import FieldEncoding from "kit/components/searchElement/fields/FieldEncoding";
-import ButtonCounter from "kit/components/buttons/ButtonCounter";
-import Button from "kit/components/buttons/Button";
-import ButtonShow from "kit/components/buttons/ButtonShow";
 import { CodeSearchHintResponse, SearchHandler } from "../type";
-import { MdShoppingCart } from "react-icons/md";
 import Highlighter from "./Highlighter";
 import FieldSeries from "kit/components/searchElement/fields/FieldSeries";
+import BasketAddButton from 'basket/src/Basket/BasketAddButton'
+import FieldPagetitle from "kit/components/searchElement/fields/FieldPagetitle";
 
 interface CodeSuggestsProps {
     hints: Array<CodeSearchHintResponse>,
@@ -23,20 +20,13 @@ const CodeSuggests: FC<CodeSuggestsProps> = ({ hints, onSuggestClick }) => {
             {
                 hints.map((item, idx) => {
                     return (
-                        <FieldSeries
+                        <FieldPagetitle 
                             key={idx}
-                            title={<Highlighter text={item.value_highlighted} />}
-                            handleArrowClick={() => { onSuggestClick(item.value, 'search') }}
-                        ></FieldSeries>
-                        // <FieldEncoding 
-                        //     key={idx}
-                        //     pagetitle={<Highlighter text={item.value_highlighted} />}
-
-                        //     button={<ButtonCounter text_style={'font-size-16-gray'} counter={1} btn_style="counter-h40"></ButtonCounter>}
-                        //     button2={<Button icon={<MdShoppingCart size={24} fill={'white'} />} btn_style={"btn-primary"}><span className="fw-500">Купить</span></Button>}
-                        //     btnGrayArrow={true}
-                        //     handleArrowClick={() => onSuggestClick(item.value, 'search')}
-                        // ></FieldEncoding>
+                            imageUrl={item.image_url}
+                            pagetitle={<Highlighter text={item.value_highlighted} />}
+                            basketButton={<BasketAddButton pagetitle={item.value} />}
+                            handleArrowClick={() => onSuggestClick(item.value, 'search')}
+                        ></FieldPagetitle>
                     )
                 })
             }
