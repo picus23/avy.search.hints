@@ -94,7 +94,7 @@ class App extends Component<AppProps> {
 
   render() {
     return (
-      <div className="App search-hint-wrap flex-grow-1" ref={this.wrapContainer}>
+      <div className="App search-hint-wrap flex-grow-1" style={{zIndex: 2000}} ref={this.wrapContainer}>
         <SearchInput
           searchPhrase={this.state.inputPhrase}
           handleUserTyping={this.handleUserType}
