@@ -8,7 +8,9 @@ export interface GlobalSearchHintsResponse {
   
 export interface FilterSearchHintResponse {
   title: string,
-  subtitle: string
+  subtitle: string,
+  value_highlighted: string,
+  search: string,
 }
 
 export interface CodeSearchHintResponse {

@@ -3,6 +3,7 @@ import SearchTitle from "kit/components/searchElement/SearchBar/SearchTitle";
 import FieldSeries from "kit/components/searchElement/fields/FieldSeries";
 // import { MdFilterAlt } from "react-icons/md";
 import { FilterSearchHintResponse, SearchHandler } from "../type";
+import Highlighter from "./Highlighter";
 
 interface FilterSuggestsProps {
     hints: Array<FilterSearchHintResponse>,
@@ -26,9 +27,8 @@ const FilterSuggests: FC<FilterSuggestsProps> = ({hints, onSuggestClick}) => {
                         <FieldSeries
                             key={idx}
                             // icon={<MdFilterAlt size={24} fill={'gray'} />} 
-                            title={hint.title} 
-                            subtitle={hint.subtitle}
-                            handleArrowClick={() => { onSuggestClick(hint.title, 'filter') }}
+                            title={<Highlighter text={hint.value_highlighted} />} 
+                            handleArrowClick={() => { onSuggestClick(hint.search, 'filter') }}
                         ></FieldSeries>
                     )
                 })

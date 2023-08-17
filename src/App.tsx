@@ -111,7 +111,7 @@ class App extends Component<AppProps> {
           <SearchBarEncoding>
             <div className="search-hint-history">
 
-              {/* {this.state.searchHints?.filter !== undefined &&
+              {this.state.searchHints?.filter !== undefined &&
                 <>
                   <FilterSuggests
                     hints={this.state.searchHints.filter}
@@ -119,7 +119,7 @@ class App extends Component<AppProps> {
                   ></FilterSuggests>
                   <hr className="w-100" />
                 </>
-              } */}
+              }
 
               {this.state.searchHints?.code !== undefined &&
                 <>
