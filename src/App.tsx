@@ -8,12 +8,13 @@ import CategorySuggests from './components/CategorySuggests'
 import FileSuggests from './components/FileSuggests'
 import { GlobalSearchHintsResponse, SearchHandler } from './type'
 import { pushPhrase } from './searchHistory'
-import EmptyHints from './components/EmptyHints'
+import EmptyHints, { PopItem } from './components/EmptyHints'
 
 interface AppProps {
   initSearchPhrase?: string,
   getGlobalSearchHints: (phrase: string) => Promise<GlobalSearchHintsResponse>
-  handleSearch: SearchHandler
+  handleSearch: SearchHandler,
+  pop: PopItem[],
 }
 
 class App extends Component<AppProps> {
@@ -74,12 +75,12 @@ class App extends Component<AppProps> {
     this.setState({ ...this.state, inputPhrase: phrase })
   }
 
-  handleSearchWrapper: SearchHandler = (phrase: string, context: string | null) => {
+  handleSearchWrapper: SearchHandler = (phrase: string, context: string | null, select: string | null) => {
     this.setHintsDisplayed(false)
     if (context == 'search')
       pushPhrase(phrase)
 
-    this.props.handleSearch(phrase, context)
+    this.props.handleSearch(phrase, context, select)
   }
 
   handleUserType = (phrase: string) => {
@@ -103,7 +104,7 @@ class App extends Component<AppProps> {
 
         {this.state.isHintsDisplayed && Object.keys(this.state.searchHints).length === 0 &&
           <SearchBarEncoding>
-            <EmptyHints onSuggestClick={this.handleSearchWrapper}></EmptyHints>
+            <EmptyHints pop={this.props.pop} onSuggestClick={this.handleSearchWrapper}></EmptyHints>
           </SearchBarEncoding>
         }
 

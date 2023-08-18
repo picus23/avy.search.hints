@@ -6,18 +6,27 @@ import { MdSearch } from 'react-icons/md'
 import { getStorage } from "../searchHistory";
 import { SearchHandler } from "../type";
 
+
+export interface PopItem {
+    title: string,
+    image: string,
+    url: string,
+}
 interface EmptyHintsProps {
+    pop: PopItem[],
     onSuggestClick: SearchHandler,
 }
 
-const EmptyHints: FC<EmptyHintsProps> = ({ onSuggestClick }) => {
+
+
+const EmptyHints: FC<EmptyHintsProps> = ({ pop, onSuggestClick }) => {
 
     const storage = getStorage()
 
 
     return <>
         {
-            storage.length!=0 && <>
+            storage.length != 0 && <>
                 <SearchTitle>Вы искали</SearchTitle>
                 <div className="d-flex align-items-center">
 
@@ -47,35 +56,27 @@ const EmptyHints: FC<EmptyHintsProps> = ({ onSuggestClick }) => {
             ))
         }
 
-        <hr />
-
-        <SearchTitle>Популярные категории</SearchTitle>
         {
-            [
+            pop && !!pop.length && <>
+                <hr />
+                <SearchTitle>Популярные категории</SearchTitle>
                 {
-                    title: 'Трубные фитинги',
-                    image: '/assets/v/images/2__preview.jpg',
-                    url: '/products/trubnye_fitingi',
-                },
-                {
-                    title: 'Шаровые краны инструментальные',
-                    image: '/assets/v/images/14__preview.jpg',
-                    url: '/products/sharovye_krany_instrumentalnye',
-                }, {
-                    title: 'Игольчатые вентили инструментальные',
-                    image: '/assets/v/images/41__preview.jpg',
-                    url: '/products/igolchatye_ventili_instrumentalnye',
-                },
-            ].map(({ title, image, url }, idx) => (
-                <FieldSeries
-                    key={idx}
-                    title={title}
-                    subtitle={''}
-                    icon={image}
-                    handleArrowClick={() => { onSuggestClick(url, 'url') }}
-                ></FieldSeries>
-            ))
+                    pop.map(({ title, image, url }, idx) => (
+                        <FieldSeries
+                            key={idx}
+                            title={title}
+                            subtitle={''}
+                            icon={image}
+                            handleArrowClick={() => { onSuggestClick(url, 'url') }}
+                        ></FieldSeries>
+                    ))
+                }
+
+
+            </>
         }
+
+
     </>
 }
 

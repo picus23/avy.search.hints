@@ -28,7 +28,7 @@ const FilterSuggests: FC<FilterSuggestsProps> = ({hints, onSuggestClick}) => {
                             key={idx}
                             // icon={<MdFilterAlt size={24} fill={'gray'} />} 
                             title={<Highlighter text={hint.value_highlighted} />} 
-                            handleArrowClick={() => { onSuggestClick(hint.search, 'filter') }}
+                            handleArrowClick={() => { onSuggestClick(hint.search, 'filter', hint.select) }}
                         ></FieldSeries>
                     )
                 })

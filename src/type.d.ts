@@ -11,6 +11,7 @@ export interface FilterSearchHintResponse {
   subtitle: string,
   value_highlighted: string,
   search: string,
+  select: string,
 }
 
 export interface CodeSearchHintResponse {
@@ -44,4 +45,4 @@ export interface FileSearchHintResponse {
   originName: string,
 }
 
-export type SearchHandler = (phrase: string, context: string|null) => void
+export type SearchHandler = (phrase: string, context: string|null, select: string|null) => void
