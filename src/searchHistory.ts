@@ -38,7 +38,11 @@ export const getStorage = (): historyStore => {
         return [];
     }
 
-    return JSON.parse(val)
+    try {
+        return JSON.parse(val)
+    } catch (error) {
+        return []   
+    }
 }
 
 const commitStorage = (store: historyStore): void => {
