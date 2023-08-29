@@ -45,4 +45,4 @@ export interface FileSearchHintResponse {
   originName: string,
 }
 
-export type SearchHandler = (phrase: string, context: string|null, select: string|null) => void
+export type SearchHandler = (phrase: string, context?: string, select?: string) => void

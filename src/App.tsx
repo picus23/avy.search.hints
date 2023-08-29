@@ -75,7 +75,7 @@ class App extends Component<AppProps> {
     this.setState({ ...this.state, inputPhrase: phrase })
   }
 
-  handleSearchWrapper: SearchHandler = (phrase: string, context: string | null, select: string | null) => {
+  handleSearchWrapper: SearchHandler = (phrase: string, context?: string, select?: string) => {
     this.setHintsDisplayed(false)
     if (context == 'search')
       pushPhrase(phrase)
